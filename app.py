@@ -3,14 +3,15 @@ from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Profile, Subscription, Message
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from flask import Flask
+
 app = Flask(__name__)
-app.secret_key = "your-secret-key"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///matrimony.db"
 
-db.init_app(app)
+@app.route("/")
+def home():
+    return "Hello Railway"
 
-with app.app_context():
-    db.create_all()
+
 
 # Home page
 @app.route("/")
