@@ -1,36 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title or "Matrimony" }}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ title or "Matrimony App" }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<header class="site-header">
-  <a class="brand" href="{{ url_for('index') }}">Matrimony<span>Lite</span></a>
-  <nav class="nav">
-    {% if session.get('user_id') %}
-      <a href="{{ url_for('dashboard') }}">Dashboard</a>
-      <form method="post" action="{{ url_for('logout') }}" onsubmit="return false;" style="display:none"></form>
-      <a href="{{ url_for('logout') }}">Logout</a>
-    {% else %}
-      <a href="{{ url_for('login') }}">Login</a>
-      <a class="btn" href="{{ url_for('register') }}">Register</a>
-    {% endif %}
-  </nav>
-</header>
+  <header class="site-header container">
+    <a class="brand" href="{{ url_for('index') }}">Matrimony<span>Lite</span></a>
 
-<main class="container">
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}<ul class="flash">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
-  {% endwith %}
-  {% block content %}{% endblock %}
-</main>
+    <nav class="nav">
+      {% if session.get('user_id') %}
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+        <a class="btn" href="{{ url_for('register') }}">Register</a>
+      {% endif %}
+    </nav>
+  </header>
 
-<footer class="site-footer">
-  <div class="container">© {{ 2025 }} MatrimonyLite</div>
-</footer>
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash">
+          {% for m in messages %}
+            <li>{{ m }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer container">
+    © {{ 2025 }} MatrimonyLite — Built with ❤️
+  </footer>
 </body>
 </html>
