@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Admin Panel</h2>
+
+<h3 class="mt-16">Pending Approvals</h3>
+<table class="table mt-8">
+  <thead><tr><th>Name</th><th>Email</th><th>Gender</th><th>Age</th><th>Action</th></tr></thead>
+  <tbody>
+  {% for p in pending %}
+    <tr>
+      <td>{{ p.name }}</td>
+      <td>{{ p.email }}</td>
+      <td>{{ p.gender }}</td>
+      <td>{{ p.age }}</td>
+      <td>
+        <form method="post" action="{{ url_for('approve', uid=p.id) }}">
+          <button class="btn">Approve</button>
+        </form>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5" class="muted">No pending users.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<h3 class="mt-32">Reports</h3>
+<table class="table mt-8">
+  <thead><tr><th>ID</th><th>User ID</th><th>Reason</th></tr></thead>
+  <tbody>
+  {% for r in reports %}
+    <tr><td>{{ r.id }}</td><td>{{ r.user_id }}</td><td>{{ r.reason }}</td></tr>
+  {% else %}
+    <tr><td colspan="3" class="muted">No reports filed.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

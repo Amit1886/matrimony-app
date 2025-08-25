@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Create Your Profile</h2>
+<form method="post" class="form mt-16">
+  <div class="grid two">
+    <label>Name <input name="name" required></label>
+    <label>Email <input type="email" name="email" required></label>
+  </div>
+  <div class="grid two">
+    <label>Password <input type="password" name="password" required></label>
+    <label>Gender
+      <select name="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </label>
+  </div>
+  <div class="grid two">
+    <label>Age <input type="number" name="age" min="18" value="21"></label>
+    <label>Bio <input name="bio" placeholder="About you in one line"></label>
+  </div>
+  <button class="btn">Register</button>
+</form>
+<p class="muted mt-16">After signup, please wait for admin approval.</p>
+{% endblock %}
