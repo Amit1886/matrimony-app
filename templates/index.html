@@ -2,16 +2,27 @@
 {% block content %}
 <section class="hero">
   <h1>Find Your Perfect Match</h1>
-  <p class="muted">Simple, private, and community-approved profiles.</p>
+  <p class="muted">Simple, private and admin-verified matrimonial profiles.</p>
   <div class="actions">
-    <a href="{{ url_for('register') }}" class="btn">Create Profile</a>
-    <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+    <a class="btn" href="{{ url_for('register') }}">Create Profile</a>
+    <a class="btn btn-outline" href="{{ url_for('login') }}">Login</a>
   </div>
 </section>
 
 <section class="grid mt-32">
-  <div class="card"><h3>Verified Profiles</h3><p class="muted">Admin-approved members only.</p></div>
-  <div class="card"><h3>Privacy First</h3><p class="muted">Your data stays safe with you.</p></div>
-  <div class="card"><h3>Report & Review</h3><p class="muted">Flag any suspicious profile.</p></div>
+  <div class="card">
+    <h3>Verified Profiles</h3>
+    <p class="muted">Only admin approved members are shown.</p>
+  </div>
+
+  <div class="card">
+    <h3>Privacy First</h3>
+    <p class="muted">Control your photo visibility and contact unlocks.</p>
+  </div>
+
+  <div class="card">
+    <h3>Agent Support</h3>
+    <p class="muted">Agents can help create & manage profiles.</p>
+  </div>
 </section>
 {% endblock %}
