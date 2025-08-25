@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, request, flash, ses
 from flask_sqlalchemy import SQLAlchemy
 from models import db, User, Profile, Subscription, Message
 from werkzeug.security import generate_password_hash, check_password_hash
-
 from flask import Flask
 
 app = Flask(__name__)
