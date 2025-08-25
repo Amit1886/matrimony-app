@@ -1,20 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>Dashboard</h2>
-{% if me %}<p class="muted">Logged in as <strong>{{ me.name or me.email }}</strong></p>{% endif %}
+{% if me %}
+  <p class="muted">Logged in as <strong>{{ me.name or me.email }}</strong></p>
+  <p><a class="btn btn-outline" href="{{ url_for('profile_edit') }}">Edit Profile</a></p>
+{% endif %}
+
+<h3 class="mt-16">Approved Profiles</h3>
 <ul class="cards grid mt-16">
   {% for p in profiles %}
   <li class="card">
-    <h3>{{ p.name or "Member " ~ p.id }}</h3>
-    <p class="muted">{{ p.gender or "-" }}, {{ p.age or "-" }} years</p>
+    <h3>{{ p.name or ("Member " ~ p.id) }}</h3>
+    <p class="muted">{{ p.gender or "-" }}, {{ p.age or "-" }} yrs</p>
     <p>{{ (p.bio or "")[:120] }}</p>
+
+    <!-- Report form (POST) -->
     <form method="post" action="{{ url_for('report', uid=p.id) }}">
       <input type="hidden" name="reason" value="Flagged by user">
-      <button class="btn btn-outline">Report</button>
+      <button class="btn btn-outline" type="submit">Report</button>
     </form>
   </li>
   {% else %}
-  <li class="card"><p>No profiles yet. Please check back later.</p></li>
+  <li class="card"><p>No approved profiles yet.</p></li>
   {% endfor %}
 </ul>
 {% endblock %}
