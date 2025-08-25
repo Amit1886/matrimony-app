@@ -1,11 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
 <h2>Create Your Profile</h2>
-<form method="post" class="form mt-16">
+<form method="post" action="{{ url_for('register') }}" class="form mt-16">
   <div class="grid two">
     <label>Name <input name="name" required></label>
     <label>Email <input type="email" name="email" required></label>
   </div>
+
   <div class="grid two">
     <label>Password <input type="password" name="password" required></label>
     <label>Gender
@@ -16,11 +17,16 @@
       </select>
     </label>
   </div>
+
   <div class="grid two">
     <label>Age <input type="number" name="age" min="18" value="21"></label>
-    <label>Bio <input name="bio" placeholder="About you in one line"></label>
+    <label>Mobile <input name="phone" placeholder="10-digit"></label>
   </div>
-  <button class="btn">Register</button>
+
+  <label>Short Bio <input name="bio" placeholder="One line about you"></label>
+
+  <button class="btn" type="submit">Register</button>
 </form>
-<p class="muted mt-16">After signup, please wait for admin approval.</p>
+
+<p class="muted mt-16">After signup, admin will approve your profile. Then you can login.</p>
 {% endblock %}
