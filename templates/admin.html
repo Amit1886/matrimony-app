@@ -4,7 +4,9 @@
 
 <h3 class="mt-16">Pending Approvals</h3>
 <table class="table mt-8">
-  <thead><tr><th>Name</th><th>Email</th><th>Gender</th><th>Age</th><th>Action</th></tr></thead>
+  <thead>
+    <tr><th>Name</th><th>Email</th><th>Gender</th><th>Age</th><th>Action</th></tr>
+  </thead>
   <tbody>
   {% for p in pending %}
     <tr>
@@ -14,7 +16,7 @@
       <td>{{ p.age }}</td>
       <td>
         <form method="post" action="{{ url_for('approve', uid=p.id) }}">
-          <button class="btn">Approve</button>
+          <button class="btn" type="submit">Approve</button>
         </form>
       </td>
     </tr>
