@@ -3,3 +3,5 @@ Flask_SQLAlchemy
 Werkzeug
 gunicorn
 psycopg2-binary
+Django>=4.2
+
